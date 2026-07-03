@@ -29,15 +29,23 @@ if (hero && heroRobotHead && motionAllowed) {
     const headCenterY = rect.top + rect.height / 2;
     const deltaX = event.clientX - headCenterX;
     const deltaY = event.clientY - headCenterY;
-    const rotate = clamp(deltaX / 42, -16, 16);
-    const tilt = clamp(deltaY / -70, -7, 7);
-    const eyeX = clamp(deltaX / 95, -7, 7);
-    const eyeY = clamp(deltaY / 110, -5, 5);
+    const rotate = clamp(deltaX / 24, -22, 22);
+    const tilt = clamp(deltaY / -42, -12, 12);
+    const eyeX = clamp(deltaX / 48, -11, 11);
+    const eyeY = clamp(deltaY / 58, -8, 8);
+    const bodyLean = clamp(deltaX / 120, -6, 6);
+    const armLeft = clamp(12 + deltaX / 38 + deltaY / 180, -4, 28);
+    const armRight = clamp(-12 + deltaX / 38 - deltaY / 180, -28, 4);
+    const lift = clamp(deltaY / -220, -4, 6);
 
     hero.style.setProperty("--head-rotate", `${rotate}deg`);
     hero.style.setProperty("--head-tilt", `${tilt}deg`);
     hero.style.setProperty("--eye-x", `${eyeX}px`);
     hero.style.setProperty("--eye-y", `${eyeY}px`);
+    hero.style.setProperty("--body-lean", `${bodyLean}deg`);
+    hero.style.setProperty("--arm-left-rotate", `${armLeft}deg`);
+    hero.style.setProperty("--arm-right-rotate", `${armRight}deg`);
+    hero.style.setProperty("--robot-lift", `${lift}px`);
   };
 
   const resetRobotLook = () => {
@@ -45,6 +53,10 @@ if (hero && heroRobotHead && motionAllowed) {
     hero.style.setProperty("--head-tilt", "0deg");
     hero.style.setProperty("--eye-x", "0px");
     hero.style.setProperty("--eye-y", "0px");
+    hero.style.setProperty("--body-lean", "0deg");
+    hero.style.setProperty("--arm-left-rotate", "12deg");
+    hero.style.setProperty("--arm-right-rotate", "-12deg");
+    hero.style.setProperty("--robot-lift", "0px");
   };
 
   hero.addEventListener("pointermove", updateRobotLook);

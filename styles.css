@@ -150,6 +150,10 @@ button {
   --head-tilt: 0deg;
   --eye-x: 0px;
   --eye-y: 0px;
+  --arm-left-rotate: 12deg;
+  --arm-right-rotate: -12deg;
+  --body-lean: 0deg;
+  --robot-lift: 0px;
 }
 
 .hero-backdrop,
@@ -171,6 +175,101 @@ button {
     linear-gradient(180deg, rgba(7, 17, 15, 0.12), rgba(7, 17, 15, 0.98));
 }
 
+.hero-graphics,
+.hero-particle,
+.hero-scanline,
+.hero-grid-ring {
+  position: absolute;
+  pointer-events: none;
+}
+
+.hero-graphics {
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.hero-particle {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--accent);
+  box-shadow: 0 0 18px rgba(56, 217, 150, 0.55);
+  opacity: 0.55;
+}
+
+.particle-a {
+  left: 12%;
+  top: 24%;
+  animation: particleDrift 7s ease-in-out infinite;
+}
+
+.particle-b {
+  right: 18%;
+  top: 18%;
+  width: 6px;
+  height: 6px;
+  background: var(--accent-blue);
+  animation: particleDrift 5.5s ease-in-out infinite reverse;
+}
+
+.particle-c {
+  right: 28%;
+  bottom: 22%;
+  width: 10px;
+  height: 10px;
+  background: var(--accent-gold);
+  animation: particleDrift 8s ease-in-out infinite;
+}
+
+.particle-d {
+  left: 34%;
+  bottom: 16%;
+  width: 5px;
+  height: 5px;
+  animation: particleDrift 6.2s ease-in-out infinite reverse;
+}
+
+.particle-e {
+  left: 58%;
+  top: 12%;
+  width: 7px;
+  height: 7px;
+  background: var(--accent-coral);
+  animation: particleDrift 4.8s ease-in-out infinite;
+}
+
+.hero-scanline {
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(56, 217, 150, 0.45), transparent);
+  animation: heroScan 6s linear infinite;
+  opacity: 0.35;
+}
+
+.hero-grid-ring {
+  border: 1px solid rgba(105, 200, 255, 0.16);
+  border-radius: 999px;
+}
+
+.ring-a {
+  right: 8%;
+  top: 18%;
+  width: 180px;
+  height: 180px;
+  animation: ringPulse 4s ease-in-out infinite;
+}
+
+.ring-b {
+  right: 2%;
+  bottom: 10%;
+  width: 260px;
+  height: 260px;
+  border-color: rgba(56, 217, 150, 0.14);
+  animation: ringPulse 5.5s ease-in-out infinite reverse;
+}
+
 .hero-content {
   position: relative;
   z-index: 3;
@@ -187,7 +286,41 @@ button {
   aspect-ratio: 0.82;
   pointer-events: none;
   filter: drop-shadow(0 34px 42px rgba(0, 0, 0, 0.42));
-  animation: robotFloat 5s ease-in-out infinite;
+  transform: translateY(var(--robot-lift));
+  animation: robotFloat 3.8s ease-in-out infinite;
+}
+
+.robot-hud {
+  position: absolute;
+  top: -8px;
+  left: -18px;
+  display: grid;
+  gap: 6px;
+  z-index: 4;
+}
+
+.robot-hud span {
+  padding: 5px 8px;
+  border: 1px solid rgba(56, 217, 150, 0.34);
+  border-radius: 999px;
+  background: rgba(7, 17, 15, 0.72);
+  color: var(--accent);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.62rem;
+  font-weight: 700;
+  animation: hudBlink 2.4s ease-in-out infinite;
+}
+
+.robot-hud span:nth-child(2) {
+  animation-delay: 0.4s;
+  color: var(--accent-blue);
+  border-color: rgba(105, 200, 255, 0.34);
+}
+
+.robot-hud span:nth-child(3) {
+  animation-delay: 0.8s;
+  color: var(--accent-gold);
+  border-color: rgba(241, 185, 78, 0.34);
 }
 
 .robot-orbit,
@@ -200,18 +333,28 @@ button {
   inset: 4%;
   border: 1px solid rgba(105, 200, 255, 0.24);
   transform: rotate(-18deg);
+  animation: orbitSpin 14s linear infinite;
 }
 
 .orbit-b {
   inset: 13% 0 18%;
   border-color: rgba(56, 217, 150, 0.25);
   transform: rotate(28deg);
+  animation: orbitSpin 18s linear infinite reverse;
+}
+
+.orbit-c {
+  inset: 22% 8% 28%;
+  border-color: rgba(241, 185, 78, 0.22);
+  border-style: dashed;
+  animation: orbitSpin 11s linear infinite;
 }
 
 .robot-beam {
   height: 3px;
   background: linear-gradient(90deg, transparent, rgba(56, 217, 150, 0.72), transparent);
   opacity: 0.72;
+  animation: beamPulse 2.8s ease-in-out infinite;
 }
 
 .beam-a {
@@ -226,6 +369,15 @@ button {
   bottom: 28%;
   width: 46%;
   transform: rotate(20deg);
+  animation-delay: 0.6s;
+}
+
+.beam-c {
+  top: 44%;
+  right: 18%;
+  width: 34%;
+  transform: rotate(-34deg);
+  animation-delay: 1.1s;
 }
 
 .robot-body {
@@ -239,7 +391,8 @@ button {
   background:
     radial-gradient(circle at 50% 12%, rgba(105, 200, 255, 0.28), transparent 28%),
     linear-gradient(160deg, rgba(20, 43, 37, 0.98), rgba(8, 19, 16, 0.96));
-  transform: translateX(-50%);
+  transform: translateX(-50%) rotate(var(--body-lean));
+  transition: transform 80ms ease-out;
 }
 
 .robot-neck {
@@ -270,7 +423,17 @@ button {
     rotate(var(--head-rotate))
     rotateX(var(--head-tilt));
   transform-origin: 50% 105%;
-  transition: transform 120ms ease-out;
+  transition: transform 70ms ease-out;
+}
+
+.robot-scan {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(56, 217, 150, 0.85), transparent);
+  animation: faceScan 2.2s ease-in-out infinite;
+  opacity: 0.75;
 }
 
 .robot-antenna {
@@ -332,7 +495,7 @@ button {
   background: var(--accent);
   box-shadow: 0 0 18px rgba(56, 217, 150, 0.76);
   transform: translate(var(--eye-x), var(--eye-y));
-  transition: transform 120ms ease-out;
+  transition: transform 70ms ease-out;
 }
 
 .eye-left {
@@ -370,6 +533,7 @@ button {
   border: 1px solid rgba(244, 250, 246, 0.12);
   border-radius: 10px;
   background: rgba(7, 17, 15, 0.55);
+  animation: chestPulse 2.6s ease-in-out infinite;
 }
 
 .robot-chest span:nth-child(1) {
@@ -378,10 +542,12 @@ button {
 
 .robot-chest span:nth-child(2) {
   border-color: rgba(105, 200, 255, 0.5);
+  animation-delay: 0.35s;
 }
 
 .robot-chest span:nth-child(3) {
   border-color: rgba(241, 185, 78, 0.5);
+  animation-delay: 0.7s;
 }
 
 .robot-arm {
@@ -391,16 +557,17 @@ button {
   height: 116px;
   border-radius: 999px;
   background: linear-gradient(180deg, var(--accent-blue), #17332d);
+  transition: transform 80ms ease-out;
 }
 
 .arm-left {
   left: -26px;
-  transform: rotate(12deg);
+  transform: rotate(var(--arm-left-rotate));
 }
 
 .arm-right {
   right: -26px;
-  transform: rotate(-12deg);
+  transform: rotate(var(--arm-right-rotate));
 }
 
 .robot-base {
@@ -417,10 +584,92 @@ button {
 @keyframes robotFloat {
   0%,
   100% {
-    transform: translateY(0);
+    transform: translateY(var(--robot-lift));
   }
   50% {
-    transform: translateY(-12px);
+    transform: translateY(calc(var(--robot-lift) - 18px));
+  }
+}
+
+@keyframes orbitSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes beamPulse {
+  0%,
+  100% {
+    opacity: 0.42;
+  }
+  50% {
+    opacity: 0.95;
+  }
+}
+
+@keyframes hudBlink {
+  0%,
+  100% {
+    opacity: 0.72;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes particleDrift {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(16px, -22px);
+  }
+}
+
+@keyframes heroScan {
+  0% {
+    top: 12%;
+  }
+  100% {
+    top: 88%;
+  }
+}
+
+@keyframes ringPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.35;
+  }
+  50% {
+    transform: scale(1.06);
+    opacity: 0.72;
+  }
+}
+
+@keyframes faceScan {
+  0%,
+  100% {
+    top: 18%;
+    opacity: 0.35;
+  }
+  50% {
+    top: 72%;
+    opacity: 0.95;
+  }
+}
+
+@keyframes chestPulse {
+  0%,
+  100% {
+    box-shadow: inset 0 0 0 rgba(56, 217, 150, 0);
+  }
+  50% {
+    box-shadow: inset 0 0 16px rgba(56, 217, 150, 0.18);
   }
 }
 
