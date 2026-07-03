@@ -1,0 +1,81 @@
+<svg width="1440" height="760" viewBox="0 0 1440 760" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">ROS2 autonomous robot development graphic</title>
+  <desc id="desc">A stylized robotics lab dashboard with a mobile robot, ROS2 nodes, Gazebo simulation, TF2 validation, and embedded sensor signals.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1440" y2="760" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#07110F"/>
+      <stop offset="0.48" stop-color="#10231F"/>
+      <stop offset="1" stop-color="#0A1614"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#17332D" stop-opacity="0.94"/>
+      <stop offset="1" stop-color="#0A1714" stop-opacity="0.9"/>
+    </linearGradient>
+    <linearGradient id="cyan" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#38D996"/>
+      <stop offset="1" stop-color="#69C8FF"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="26" stdDeviation="26" flood-color="#000000" flood-opacity="0.35"/>
+    </filter>
+    <pattern id="grid" width="42" height="42" patternUnits="userSpaceOnUse">
+      <path d="M 42 0 L 0 0 0 42" stroke="#EDF7F2" stroke-opacity="0.07" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1440" height="760" fill="url(#bg)"/>
+  <rect width="1440" height="760" fill="url(#grid)"/>
+  <path d="M0 628C188 562 314 602 456 547C609 488 704 363 860 355C1043 346 1129 500 1440 399V760H0V628Z" fill="#38D996" fill-opacity="0.08"/>
+  <path d="M0 161C150 213 280 168 406 221C566 288 646 409 813 410C1005 411 1129 276 1440 336" stroke="#69C8FF" stroke-opacity="0.18" stroke-width="3"/>
+
+  <g filter="url(#shadow)">
+    <rect x="760" y="98" width="456" height="258" rx="18" fill="url(#panel)" stroke="#EDF7F2" stroke-opacity="0.13"/>
+    <rect x="788" y="126" width="178" height="34" rx="8" fill="#081310" stroke="#38D996" stroke-opacity="0.45"/>
+    <text x="808" y="148" fill="#38D996" font-family="JetBrains Mono, monospace" font-size="16" font-weight="700">ROS2 HUMBLE</text>
+    <rect x="788" y="184" width="120" height="50" rx="10" fill="#10231F" stroke="#69C8FF" stroke-opacity="0.55"/>
+    <text x="813" y="216" fill="#EDF7F2" font-family="Inter, sans-serif" font-size="18" font-weight="700">Nodes</text>
+    <rect x="968" y="184" width="120" height="50" rx="10" fill="#10231F" stroke="#F1B94E" stroke-opacity="0.6"/>
+    <text x="1002" y="216" fill="#EDF7F2" font-family="Inter, sans-serif" font-size="18" font-weight="700">TF2</text>
+    <rect x="1058" y="268" width="120" height="50" rx="10" fill="#10231F" stroke="#FF7A6B" stroke-opacity="0.62"/>
+    <text x="1082" y="300" fill="#EDF7F2" font-family="Inter, sans-serif" font-size="18" font-weight="700">RViz</text>
+    <rect x="878" y="268" width="120" height="50" rx="10" fill="#10231F" stroke="#38D996" stroke-opacity="0.55"/>
+    <text x="910" y="300" fill="#EDF7F2" font-family="Inter, sans-serif" font-size="18" font-weight="700">Gazebo</text>
+    <path d="M908 209H968" stroke="#69C8FF" stroke-width="3" stroke-linecap="round"/>
+    <path d="M1028 234V268" stroke="#F1B94E" stroke-width="3" stroke-linecap="round"/>
+    <path d="M998 293H1058" stroke="#38D996" stroke-width="3" stroke-linecap="round"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="220" y="142" width="468" height="358" rx="22" fill="url(#panel)" stroke="#EDF7F2" stroke-opacity="0.14"/>
+    <rect x="258" y="182" width="392" height="274" rx="16" fill="#081310" stroke="#EDF7F2" stroke-opacity="0.09"/>
+    <path d="M298 402C356 300 443 330 482 259C516 197 578 221 615 190" stroke="#38D996" stroke-width="7" stroke-linecap="round"/>
+    <path d="M298 402C356 300 443 330 482 259C516 197 578 221 615 190" stroke="#EDF7F2" stroke-opacity="0.28" stroke-width="18" stroke-linecap="round"/>
+    <circle cx="298" cy="402" r="15" fill="#38D996"/>
+    <circle cx="482" cy="259" r="13" fill="#F1B94E"/>
+    <circle cx="615" cy="190" r="15" fill="#69C8FF"/>
+    <rect x="372" y="315" width="118" height="80" rx="20" fill="#10231F" stroke="#38D996" stroke-width="3"/>
+    <rect x="344" y="334" width="28" height="44" rx="14" fill="#69C8FF"/>
+    <rect x="490" y="334" width="28" height="44" rx="14" fill="#69C8FF"/>
+    <circle cx="407" cy="345" r="10" fill="#F1B94E"/>
+    <circle cx="456" cy="345" r="10" fill="#F1B94E"/>
+    <path d="M382 293C414 264 450 264 480 293" stroke="#69C8FF" stroke-width="4" stroke-linecap="round"/>
+    <path d="M358 276C406 232 459 232 505 276" stroke="#69C8FF" stroke-opacity="0.55" stroke-width="3" stroke-linecap="round"/>
+    <text x="286" y="220" fill="#A9BCB5" font-family="JetBrains Mono, monospace" font-size="17" font-weight="700">navigation map</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="826" y="432" width="392" height="186" rx="18" fill="url(#panel)" stroke="#EDF7F2" stroke-opacity="0.13"/>
+    <text x="860" y="474" fill="#EDF7F2" font-family="Inter, sans-serif" font-size="24" font-weight="800">Embedded Integration</text>
+    <text x="860" y="506" fill="#A9BCB5" font-family="JetBrains Mono, monospace" font-size="15" font-weight="700">ESP32  /  Arduino  /  Encoders</text>
+    <rect x="864" y="536" width="300" height="12" rx="6" fill="#EDF7F2" fill-opacity="0.08"/>
+    <rect x="864" y="536" width="224" height="12" rx="6" fill="url(#cyan)"/>
+    <rect x="864" y="568" width="300" height="12" rx="6" fill="#EDF7F2" fill-opacity="0.08"/>
+    <rect x="864" y="568" width="178" height="12" rx="6" fill="#F1B94E"/>
+  </g>
+
+  <g>
+    <path d="M676 320C733 345 781 381 826 448" stroke="#38D996" stroke-opacity="0.32" stroke-width="3" stroke-dasharray="10 12"/>
+    <path d="M686 242C728 209 742 180 760 162" stroke="#69C8FF" stroke-opacity="0.35" stroke-width="3" stroke-dasharray="10 12"/>
+    <path d="M688 430C746 471 779 510 826 536" stroke="#F1B94E" stroke-opacity="0.32" stroke-width="3" stroke-dasharray="10 12"/>
+  </g>
+</svg>
